@@ -22,6 +22,7 @@ const Form: FC<FormProps> = ({ formVisibility, onNewNote }) => {
 
   const onSave = () => {
     onNewNote({ id: Date.now().toString(), text: noteText });
+    formVisibility(false);
   };
 
   const onClose = () => {
