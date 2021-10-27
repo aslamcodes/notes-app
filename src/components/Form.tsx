@@ -6,9 +6,10 @@ import {
   Dispatch,
   FC,
 } from "react";
-import { Button } from "./";
+import { Note } from "../App";
+import { Button } from "./UI";
 
-const Form: FC<FormProps> = ({ formVisibilityHandler }) => {
+const Form: FC<FormProps> = ({ formVisibility, onNewNote }) => {
   const [noteText, setNoteText] = useState("");
 
   const submitHandler = (e: SyntheticEvent) => {
@@ -19,10 +20,12 @@ const Form: FC<FormProps> = ({ formVisibilityHandler }) => {
     setNoteText(e.currentTarget.value);
   };
 
-  const onSave = () => {};
+  const onSave = () => {
+    onNewNote({ id: Date.now().toString(), text: noteText });
+  };
 
   const onClose = () => {
-    formVisibilityHandler(false);
+    formVisibility(false);
   };
 
   return (
@@ -49,7 +52,8 @@ const Form: FC<FormProps> = ({ formVisibilityHandler }) => {
 };
 
 interface FormProps {
-  formVisibilityHandler: Dispatch<SetStateAction<boolean>>;
+  formVisibility: Dispatch<SetStateAction<boolean>>;
+  onNewNote: (newNote: Note) => void;
 }
 
 export { Form };

@@ -16,11 +16,21 @@ function App() {
     setIsFormVisible(true);
   };
 
+  const onNewNoteHandler = (newNote: Note) => {
+    setNotes((prev) => [newNote, ...prev]);
+  };
+
+  const onDeleteNoteHandler = (noteId: string) => {
+    setNotes((prev) => prev.filter((note) => note.id !== noteId));
+  };
+
   return (
     <>
       <Topbar onNewNote={showForm} />
-      {isFormVisible && <Form formVisibilityHandler={setIsFormVisible} />}
-      <Notes notes={notes} />
+      {isFormVisible && (
+        <Form formVisibility={setIsFormVisible} onNewNote={onNewNoteHandler} />
+      )}
+      <Notes notes={notes} onDeleteNote={onDeleteNoteHandler} />
     </>
   );
 }

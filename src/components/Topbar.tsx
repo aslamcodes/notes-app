@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { BsPatchPlus } from "react-icons/bs";
-import { Button } from "./";
+import { Button } from "./UI";
 
 export const Topbar: FC<TopbarProps> = ({ onNewNote }) => {
   return (

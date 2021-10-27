@@ -11,8 +11,8 @@ const Button: FC<ButtonProps> = ({ children, onClick = () => {} }) => {
   );
 };
 
-interface ButtonProps {
-  onClick: () => void;
+export interface ButtonProps {
+  onClick?: () => void;
 }
 
 export { Button };
