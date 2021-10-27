@@ -1,16 +1,19 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import { Topbar, Form, Notes } from "./components";
-
-const NOTES: Note[] = [
-  {
-    id: "n1",
-    text: "Nothing is Impossible, I knew nothing about typescript but I'm started, I gonna be the 20 percent of the people",
-  },
-];
+import { getNotes, saveNotes } from "./localStoreUtils";
 
 function App() {
   const [isFormVisible, setIsFormVisible] = useState(false);
-  const [notes, setNotes] = useState<Note[]>(NOTES);
+  const [notes, setNotes] = useState<Note[]>([]);
+
+  useEffect(() => {
+    const notes = getNotes();
+    setNotes(notes || [{ id: "Initial Note", text: "Start Adding Notes" }]);
+  }, []);
+
+  useEffect(() => {
+    saveNotes(notes);
+  }, [notes]);
 
   const showForm = () => {
     setIsFormVisible(true);
@@ -29,7 +32,6 @@ function App() {
       prev.map((note) => (note.id === id ? { ...note, text: newNote } : note))
     );
   };
-
   return (
     <>
       <Topbar onNewNote={showForm} />
