@@ -15,7 +15,7 @@ const NoteCard: FC<NoteCardProps> = ({ note, deleteNoteById }) => {
     setIsOnFocus(false);
   };
 
-  const onDelteHandler = () => {
+  const onDeleteHandler = () => {
     deleteNoteById(note.id);
   };
 
@@ -25,8 +25,9 @@ const NoteCard: FC<NoteCardProps> = ({ note, deleteNoteById }) => {
       onMouseEnter={onFocusHandler}
       onMouseLeave={onFocusOutHandler}
     >
+      {/* Displaying the Note */}
       <div>{note.text}</div>
-
+      {/* Note Controls */}
       <div
         className={`flex gap-5 transition-opacity duration-500 ease-in-out ${
           isOnFocus ? "opacity-100" : "opacity-0"
@@ -35,7 +36,7 @@ const NoteCard: FC<NoteCardProps> = ({ note, deleteNoteById }) => {
         <CircularButton>
           <GiPencil />
         </CircularButton>
-        <CircularButton onClick={onDelteHandler}>
+        <CircularButton onClick={onDeleteHandler}>
           <BsTrash />
         </CircularButton>
       </div>
