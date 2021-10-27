@@ -15,4 +15,4 @@ interface ButtonProps {
   onClick: () => void;
 }
 
-export default Button;
+export { Button };
