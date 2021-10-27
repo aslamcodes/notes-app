@@ -50,15 +50,14 @@ const NoteCard: FC<NoteCardProps> = ({
       {/* Edit Controls */}
       {isOnEdit && (
         <textarea
-          className="rounded-md p-3 bg-yellow-200 outline-none"
+          className="rounded-md p-3 bg-yellow-200 outline-none w-10/12 h-36 lg:h-32"
           value={noteText}
-          cols={70}
           onChange={onNoteTextChangeHandler}
         ></textarea>
       )}
       {/* Note Controls */}
       <div
-        className={`flex gap-5 transition-opacity duration-500 ease-in-out ${
+        className={`flex flex-col lg:flex-row gap-5 transition-opacity duration-500 ease-in-out lg:${
           isOnFocus ? "opacity-100" : "opacity-0"
         }`}
       >
