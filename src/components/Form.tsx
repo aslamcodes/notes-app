@@ -32,16 +32,15 @@ const Form: FC<FormProps> = ({ formVisibility, onNewNote }) => {
   return (
     <form
       onSubmit={submitHandler}
-      className="flex flex-col items-end text-xl  mx-24 p-3 rounded-lg bg-yellow-200"
+      className="flex flex-col items-end text-xl  mx-24 p-3 rounded-lg bg-yellow-300"
     >
-      <div className="flex justify-between gap-11 w-full ">
-        <p>Your Note</p>
+      <div className="flex justify-center items-center w-full">
         <textarea
           rows={5}
-          cols={33}
           value={noteText}
           onChange={onNoteChange}
-          className="px-2 py-1 flex-grow border-2 rounded-lg"
+          className="mx-2 p-2 rounded-lg w-full bg-yellow-200 outline-none"
+          placeholder="Your Notes here <3"
         />
       </div>
       <div className="flex gap-9 mt-10">
