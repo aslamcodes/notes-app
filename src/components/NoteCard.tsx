@@ -40,7 +40,7 @@ const NoteCard: FC<NoteCardProps> = ({
 
   return (
     <div
-      className="flex text-lg justify-between items-center bg-yellow-300 rounded px-4 py-7 m-3"
+      className="flex text-lg justify-between items-center bg-yellow-300 rounded px-4 py-7 m-3 shadow-lg"
       onMouseEnter={onFocusHandler}
       onMouseLeave={onFocusOutHandler}
     >
