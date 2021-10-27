@@ -35,14 +35,19 @@ function App() {
   return (
     <>
       <Topbar onNewNote={showForm} />
-      {isFormVisible && (
-        <Form formVisibility={setIsFormVisible} onNewNote={onNewNoteHandler} />
-      )}
-      <Notes
-        notes={notes}
-        onDeleteNote={onDeleteNoteHandler}
-        onEditNote={onUpdateNoteHandler}
-      />
+      <div className="flex flex-col px-3">
+        {isFormVisible && (
+          <Form
+            formVisibility={setIsFormVisible}
+            onNewNote={onNewNoteHandler}
+          />
+        )}
+        <Notes
+          notes={notes}
+          onDeleteNote={onDeleteNoteHandler}
+          onEditNote={onUpdateNoteHandler}
+        />
+      </div>
     </>
   );
 }

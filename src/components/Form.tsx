@@ -32,7 +32,7 @@ const Form: FC<FormProps> = ({ formVisibility, onNewNote }) => {
   return (
     <form
       onSubmit={submitHandler}
-      className="flex flex-col items-end text-xl  mx-24 p-3 rounded-lg bg-yellow-300"
+      className="flex flex-col w-full items-end text-xl p-3 rounded-lg bg-yellow-300"
     >
       <div className="flex justify-center items-center w-full">
         <textarea
