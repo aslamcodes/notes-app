@@ -24,13 +24,23 @@ function App() {
     setNotes((prev) => prev.filter((note) => note.id !== noteId));
   };
 
+  const onUpdateNoteHandler = (id: string, newNote: string) => {
+    setNotes((prev) =>
+      prev.map((note) => (note.id === id ? { ...note, text: newNote } : note))
+    );
+  };
+
   return (
     <>
       <Topbar onNewNote={showForm} />
       {isFormVisible && (
         <Form formVisibility={setIsFormVisible} onNewNote={onNewNoteHandler} />
       )}
-      <Notes notes={notes} onDeleteNote={onDeleteNoteHandler} />
+      <Notes
+        notes={notes}
+        onDeleteNote={onDeleteNoteHandler}
+        onEditNote={onUpdateNoteHandler}
+      />
     </>
   );
 }
