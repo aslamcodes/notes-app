@@ -1,4 +1,4 @@
-import { FC, FormEvent, useState } from "react";
+import { FC, FormEvent, MouseEvent, useState } from "react";
 import { GiPencil } from "react-icons/gi";
 import { BsTrash } from "react-icons/bs";
 import { TiTick } from "react-icons/ti";
@@ -21,15 +21,21 @@ const NoteCard: FC<NoteCardProps> = ({
     setIsOnFocus(false);
   };
 
-  const onDeleteHandler = () => {
+  const onDeleteHandler = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
     deleteNoteById(note.id);
   };
 
-  const toggleEditMode = () => {
+  const toggleEditMode = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
     setIsOnEdit(true);
   };
 
-  const onEditSave = () => {
+  const onEditSave = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
     updateNoteById(note.id, noteText);
     setIsOnEdit(false);
   };
@@ -40,7 +46,7 @@ const NoteCard: FC<NoteCardProps> = ({
 
   return (
     <div
-      className="flex text-lg justify-between items-center relative bg-yellow-300 rounded px-4 py-7 m-3 shadow-lg"
+      className="flex text-lg justify-between items-center relative bg-yellow-300 rounded px-4 py-7 m-3 shadow-lg cursor-pointer"
       onMouseEnter={onFocusHandler}
       onMouseLeave={onFocusOutHandler}
     >

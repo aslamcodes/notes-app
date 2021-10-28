@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, MouseEvent } from "react";
 
 const Button: FC<ButtonProps> = ({ children, onClick = () => {} }) => {
   return (
@@ -12,7 +12,7 @@ const Button: FC<ButtonProps> = ({ children, onClick = () => {} }) => {
 };
 
 export interface ButtonProps {
-  onClick?: () => void;
+  onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
 }
 
 export { Button };
