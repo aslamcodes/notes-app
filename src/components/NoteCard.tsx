@@ -40,12 +40,22 @@ const NoteCard: FC<NoteCardProps> = ({
 
   return (
     <div
-      className="flex text-lg justify-between items-center bg-yellow-300 rounded px-4 py-7 m-3 shadow-lg"
+      className="flex text-lg justify-between items-center relative bg-yellow-300 rounded px-4 py-7 m-3 shadow-lg"
       onMouseEnter={onFocusHandler}
       onMouseLeave={onFocusOutHandler}
     >
       {/* Displaying the Note */}
       {!isOnEdit && <div>{noteText}</div>}
+
+      {isOnEdit && (
+        <div className="text-yellow-900 text-sm absolute bottom-1 left-4  ">
+          {!note.isEdited ? (
+            <p>Created on {note.dateCreated?.toLocaleString("en")}</p>
+          ) : (
+            <p>Edited on {note.lastEdited?.toLocaleString("en")}</p>
+          )}
+        </div>
+      )}
 
       {/* Edit Controls */}
       {isOnEdit && (

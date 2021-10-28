@@ -21,7 +21,13 @@ const Form: FC<FormProps> = ({ formVisibility, onNewNote }) => {
   };
 
   const onSave = () => {
-    onNewNote({ id: Date.now().toString(), text: noteText });
+    onNewNote({
+      id: Date.now().toString(),
+      text: noteText,
+      dateCreated: new Date(),
+      lastEdited: new Date(),
+      isEdited: false,
+    });
     formVisibility(false);
   };
 

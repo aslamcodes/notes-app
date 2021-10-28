@@ -8,7 +8,11 @@ function App() {
 
   useEffect(() => {
     const notes = getNotes();
-    setNotes(notes || [{ id: "Initial Note", text: "Start Adding Notes" }]);
+    const initialNote = {
+      id: "Initial Note",
+      text: "Start Adding Notes",
+    };
+    setNotes(notes || initialNote);
   }, []);
 
   useEffect(() => {
@@ -29,7 +33,11 @@ function App() {
 
   const onUpdateNoteHandler = (id: string, newNote: string) => {
     setNotes((prev) =>
-      prev.map((note) => (note.id === id ? { ...note, text: newNote } : note))
+      prev.map((note) =>
+        note.id === id
+          ? { ...note, text: newNote, lastEdited: new Date(), isEdited: true }
+          : note
+      )
     );
   };
   return (
@@ -57,4 +65,7 @@ export default App;
 export interface Note {
   id: string;
   text: string;
+  dateCreated?: Date;
+  lastEdited?: Date;
+  isEdited?: boolean;
 }
